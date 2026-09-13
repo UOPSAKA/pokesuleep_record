@@ -240,3 +240,22 @@ a:hover {
   border-radius: 6px;
   font-size: 15px;
 }
+
+/* スマホ画面ではフォームを画面いっぱいにする */
+@media (max-width: 600px) {
+  #form {
+    max-width: 100%;     /* ← 画面いっぱいに広げる */
+    margin: 0;           /* ← 中央寄せを解除 */
+    border-radius: 0;    /* ← スマホでは角丸をなくすとアプリ感UP */
+    box-shadow: none;    /* ← スマホでは影を消すと自然 */
+    padding: 20px;       /* ← 余白は維持 */
+  }
+
+  body {
+    padding: 0;          /* ← スマホでは余白をなくす */
+  }
+
+  h1 {
+    margin-top: 20px;
+  }
+}
