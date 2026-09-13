@@ -36,6 +36,15 @@ h1 {
   box-sizing: border-box;
 }
 
+/* 日付入力欄のはみ出し防止 */
+input[type="date"] {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+
+
 /* ------------------------------
    セクションタイトル（食材・サブスキル・性格）
 ------------------------------ */
