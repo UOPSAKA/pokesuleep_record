@@ -1,50 +1,96 @@
 /* ------------------------------
-   全体レイアウト
+   全体レイアウト（スマホ最適化）
 ------------------------------ */
 body {
   font-family: sans-serif;
-  margin: 40px auto;
-  padding: 0 20px;
+  margin: 0;
+  padding: 20px;
   background: #f7f7f7;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 20px;
+  font-size: 22px;
 }
 
 /* ------------------------------
-   入力フォーム（index.html）
+   入力フォーム（スマホ向けカードUI）
 ------------------------------ */
 #form {
-  max-width: 480px;   /* ← 入力ページだけスマホ幅 */
+  max-width: 480px;
   margin: 0 auto;
   background: white;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 #form input {
   width: 100%;
-  padding: 10px;
-  margin: 6px 0;
+  padding: 12px;
+  margin: 10px 0;
   font-size: 16px;
   border: 1px solid #ddd;
-  border-radius: 6px;
+  border-radius: 8px;
   box-sizing: border-box;
 }
 
-#addBtn {
+/* ------------------------------
+   セクションタイトル（食材・サブスキル・性格）
+------------------------------ */
+#form h3 {
+  margin-top: 18px;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* ------------------------------
+   サブスキル選択欄（スマホ向け）
+------------------------------ */
+.subskill-select {
   width: 100%;
   padding: 12px;
+  margin: 8px 0 12px 0;
   font-size: 16px;
-  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  box-sizing: border-box;
+
+  /* カードUIと統一 */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+
+  /* スマホでの見た目改善 */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* ▼アイコン */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+}
+
+/* optgroup 色分け */
+.subskill-select optgroup.gold { background-color: #fff4c2; }
+.subskill-select optgroup.blue { background-color: #dce9ff; }
+.subskill-select optgroup.white { background-color: #f7f7f7; }
+
+/* ------------------------------
+   記録ボタン（スマホ向け）
+------------------------------ */
+#addBtn {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  margin-top: 16px;
   background: #4caf50;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -53,139 +99,131 @@ h1 {
 }
 
 /* ------------------------------
-   記録一覧（records.html）
+   記録一覧リンク
+------------------------------ */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #4a6cff;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* ------------------------------
+   記録一覧ページ（おしゃれUI）
 ------------------------------ */
 
-/* 横スクロール（スマホ用） */
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  margin-top: 20px;
 }
 
-/* 表を画面いっぱいに広げる（PC用） */
 .record-table {
-  width: 100%;            /* ← PCで横幅いっぱい */
-  border-collapse: collapse;
-  background: white;
-  table-layout: auto;     /* ← 列幅を自動調整 */
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* セルの見やすさ改善 */
-.record-table th,
-.record-table td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  font-size: 14px;
-  white-space: nowrap;    /* ← 折り返さず横スクロール */
-}
-
-/* ヘッダー固定（大量データでも見やすい） */
 .record-table thead th {
   position: sticky;
   top: 0;
-  background: #e9f1ff;
-  z-index: 2;
-}
-
-/* ヘッダー */
-.record-table th {
-  background: #e9f1ff;
+  background: #f0f4ff;
   font-weight: bold;
-  text-align: left;
-}
-
-/* 偶数行の色を変える */
-.record-table tr:nth-child(even) {
-  background: #f7faff;
-}
-
-/* ------------------------------
-   戻るボタン
------------------------------- */
-.back-btn {
-  display: inline-block;
-  margin-bottom: 12px;
-  padding: 8px 12px;
-  background: #4caf50;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.back-btn:hover {
-  background: #43a047;
-}
-
-/* ------------------------------
-   サブスキル選択欄の色分け
------------------------------- */
-.subskill-select optgroup.gold {
-  background-color: #fff4c2;
-}
-
-.subskill-select optgroup.blue {
-  background-color: #dce9ff;
-}
-
-.subskill-select optgroup.white {
-  background-color: #f7f7f7;
-}
-
-/* ------------------------------
-   サブスキル選択欄（カードUIと統一）
------------------------------- */
-
-.subskill-select {
-  width: 100%;
   padding: 12px;
-  margin: 6px 0 12px 0;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background: white;
-  box-sizing: border-box;
-
-  /* カードUIと同じ影 */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-
-  /* iPhone/Androidでの見た目改善 */
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  /* ▼アイコンを右側に追加（UI向上） */
-  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 18px;
+  z-index: 2;
+  border-bottom: 2px solid #d0d8ff;
 }
 
-.search-box {
-  width: 100%;
-  padding: 10px;
-  margin: 12px 0;
-  font-size: 16px;
+.record-table td {
+  padding: 12px 10px;
+  font-size: 15px;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+}
+
+.record-table tr:nth-child(even) {
+  background: #fafbff;
+}
+
+.record-table tbody tr:hover {
+  background: #eef3ff;
+  transition: background 0.2s;
+}
+
+/* ------------------------------
+   サブスキルタグ（色分け）
+------------------------------ */
+.subskill-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-right: 4px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  box-sizing: border-box;
 }
 
-/* サブスキル色分け（記録一覧用） */
 .sub-gold {
-  background-color: #fff4c2;
+  background: #fff4c2;
+  border-color: #e6d38a;
 }
 
 .sub-blue {
-  background-color: #dce9ff;
+  background: #dce9ff;
+  border-color: #a8c3ff;
 }
 
 .sub-white {
-  background-color: #f7f7f7;
+  background: #f7f7f7;
+  border-color: #d0d0d0;
 }
 
+/* ------------------------------
+   操作ボタン
+------------------------------ */
+.action-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}
 
+.edit-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.delete-btn {
+  background: #e53935;
+  color: white;
+}
+
+/* ------------------------------
+   検索ボックス
+------------------------------ */
+.search-box {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* ------------------------------
+   検索結果サマリー
+------------------------------ */
 .search-summary {
   margin: 10px 0;
   padding: 10px;
