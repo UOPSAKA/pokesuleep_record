@@ -101,18 +101,26 @@ h1 {
 /* ------------------------------
    記録一覧リンク
 ------------------------------ */
+/* 記録一覧リンク（スマホ最適化） */
 a {
-  display: block;
-  text-align: center;
-  margin-top: 20px;
+  display: block;              /* ← 横幅いっぱいにする */
+  max-width: 480px;            /* ← 入力フォームと同じ幅に揃える */
+  margin: 20px auto;           /* ← 中央寄せ */
+  padding: 12px;
   font-size: 16px;
+  text-align: center;
   text-decoration: none;
   color: #4a6cff;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  box-sizing: border-box;      /* ← はみ出し防止 */
 }
 
 a:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
+
 
 /* ------------------------------
    記録一覧ページ（おしゃれUI）
